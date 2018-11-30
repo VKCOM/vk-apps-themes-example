@@ -5,9 +5,6 @@ import ReactDOM from 'react-dom';
 import connect from '@vkontakte/vkui-connect';
 import App from './App';
 
-// Init VK App
-connect.send('VKWebAppInit', {});
-
 connect.subscribe((e) => {
     switch (e.detail.type) {
         case 'VKWebAppUpdateConfig':
@@ -20,5 +17,8 @@ connect.subscribe((e) => {
             console.log(e.detail.type);
     }
 });
+
+// Init VK App
+connect.send('VKWebAppInit', {});
 
 ReactDOM.render(<App />, document.getElementById('root'));
